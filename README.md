@@ -10,10 +10,13 @@ To be written...
 
 Currently Jack does not support databinding and realm. So retro lambda will be used instead until Jack does support these libraries.
 
+## Annotation Processing
+
+Using the built in version of the gradle plugin 2.2 did not seem to generate dagger classes. For now apt is used.
+
 ## TODO
 
 Initial setup to make for the following
-* Dagger2
 * Retrofit
 * RxJava usage
 * Realm
@@ -21,6 +24,7 @@ Initial setup to make for the following
 * Databinding usage
 * RecyclerView examples
 * Setup using mvp for testing purposes
+* Dependency version seperate
 * Productflavors/builds ( Stage, test?, mock )
 
 Testing everything
@@ -37,6 +41,7 @@ Testing everything
 
 ### 11 oktober 2016
 
+* Added dagger2 setup/example
 * Added dagger2, RxJava, Realm dependencies to gradle, Retrofit with GSON, Picasso
 * Enabled Databinding
 
