@@ -17,15 +17,13 @@ Using the built in version of the gradle plugin 2.2 did not seem to generate dag
 ## TODO
 
 Initial setup to make for the following
-* Retrofit
-* RxJava usage
 * Realm
 * Picasso usage
 * Databinding usage
 * RecyclerView examples
 * Setup using mvp for testing purposes
-* Dependency version seperate
-* Productflavors/builds ( Stage, test?, mock )
+* Dependency version separate
+* Product flavors/builds ( Stage, test?, mock )
 
 Testing everything
 * Unit testing
@@ -34,12 +32,15 @@ Testing everything
 ## Not included by default
 
 * Any analytics
+* Crashlytics
 * Firebase
 
 ## Changelog
 
+### 14 Oktober 2016
+* Added RxJava example with Retrofit2 in the GithubService
 
-### 11 oktober 2016
+### 11 Oktober 2016
 
 * Added dagger2 setup/example
 * Added dagger2, RxJava, Realm dependencies to gradle, Retrofit with GSON, Picasso
