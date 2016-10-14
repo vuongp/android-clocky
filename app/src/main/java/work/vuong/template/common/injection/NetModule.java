@@ -1,9 +1,10 @@
 package work.vuong.template.common.injection;
 
 import android.content.Context;
-import android.support.compat.BuildConfig;
 
 import java.io.File;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 
 import javax.inject.Singleton;
 
@@ -15,6 +16,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import work.vuong.template.BuildConfig;
 import work.vuong.template.R;
 import work.vuong.template.common.net.GitHubService;
 
@@ -40,6 +42,7 @@ class NetModule {
 
         if (BuildConfig.DEBUG) {
             httpClientBuilder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
+            httpClientBuilder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.168.0.74", 8888)));
         }
 
         return new Retrofit.Builder()
