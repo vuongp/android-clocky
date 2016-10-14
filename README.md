@@ -17,10 +17,8 @@ Using the built in version of the gradle plugin 2.2 did not seem to generate dag
 ## TODO
 
 Initial setup to make for the following
-* Realm
-* Picasso usage
-* Databinding usage
 * RecyclerView examples
+* Picasso usage
 * Setup using mvp for testing purposes
 * Dependency version separate
 * Product flavors/builds ( Stage, test?, mock )
@@ -39,6 +37,8 @@ Testing everything
 
 ### 14 Oktober 2016
 * Added RxJava example with Retrofit2 in the GithubService
+* Added Realm implementation
+*
 
 ### 11 Oktober 2016
 
