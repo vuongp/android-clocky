@@ -1,54 +1,43 @@
-package work.vuong.template;
+package work.vuong.template.screen.home;
 
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.List;
+import work.vuong.template.R;
+import work.vuong.template.common.activity.AbstractActivity;
+import work.vuong.template.common.injection.AppComponent;
 
-import javax.inject.Inject;
-
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-import work.vuong.template.common.activity.BaseActivity;
-import work.vuong.template.common.model.GitHubUser;
-import work.vuong.template.common.net.GitHubService;
-
-public class MainActivity extends BaseActivity
+/**
+ * // TODO: 14-10-16 Edit change and delete stuff in here..
+ */
+public class MainActivity extends AbstractActivity<ViewDataBinding>
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
 
-    @Inject
-    GitHubService gitHubService;
+    @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
+    @Override
+    protected void inject(@NonNull AppComponent component) {
+        component.inject(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getComponent().inject(this);
-
-        // TODO: 14-10-16 Move example
-//        gitHubService.searchUsers("vuongp")
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(gitHubUsers -> {
-//                    Log.d(TAG, "Total:" + gitHubUsers.getTotalCount());
-//                    for (GitHubUser gitHubUser : gitHubUsers.getResults()) {
-//                        Log.d(TAG, "github User found: " + gitHubUser.getLogin());
-//                    }
-//                }, Throwable::printStackTrace);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -122,4 +111,5 @@ public class MainActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

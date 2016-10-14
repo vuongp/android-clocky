@@ -2,15 +2,18 @@ package work.vuong.template.common.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by vuongp on 14-10-16.
  *
  *  Github user object
  */
-public class GitHubUser {
+public class GitHubUser extends RealmObject{
 
     private String login;
-    private int id;
+    @PrimaryKey private int id;
     @SerializedName("avatar_url") private String avatarUrl;
     @SerializedName("gravatar_id") private String gravatarId;
     private String url;
