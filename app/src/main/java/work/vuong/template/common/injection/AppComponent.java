@@ -14,7 +14,8 @@ import work.vuong.template.screen.home.MainActivity;
 @Singleton
 @Component(modules = {
         AppModule.class,
-        NetModule.class
+        NetModule.class,
+        StoreModule.class
 })
 public interface AppComponent {
     void inject(MainActivity mainActivity);
