@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.google.common.base.Preconditions;
+
 import javax.inject.Inject;
 
 import work.vuong.template.R;

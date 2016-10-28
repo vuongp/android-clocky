@@ -9,6 +9,7 @@ import rx.Observable;
 import work.vuong.template.common.model.GithubUser;
 import work.vuong.template.common.model.GithubSearch;
 import work.vuong.template.common.net.GitHubService;
+import work.vuong.template.common.util.StringUtils;
 
 /**
  * Created by vuongp on 14-10-16.
@@ -26,22 +27,20 @@ public class GithubStore {
     }
 
     public Observable<GithubSearch<GithubUser>> githubSearchUser(String query){
-        if (TextUtils.isEmpty(query)) {
+        if (StringUtils.isEmpty(query)) {
             return Observable.just(GithubSearch.empty(GithubUser.class));
         }
 
         return gitHubService.searchUsers(query);
     }
 
-    public void saveUser(GithubUser user){
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(user);
-        realm.commitTransaction();
-    }
+    public void saveUser(GithubUser... users){
+        if (users == null) return;
 
-    public void deleteUser(GithubUser user) {
         realm.beginTransaction();
-        user.deleteFromRealm();
+        for (GithubUser user : users) {
+            realm.copyToRealmOrUpdate(user);
+        }
         realm.commitTransaction();
     }
 
