@@ -3,8 +3,8 @@ package work.vuong.template.common.injection;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import work.vuong.template.common.activity.AddUserActivity;
-import work.vuong.template.screen.home.MainActivity;
+import work.vuong.template.screen.adduser.AddUserActivity;
+import work.vuong.template.screen.home.HomeActivity;
 
 /**
  * Created by vuongp on 11-10-16.
@@ -18,7 +18,6 @@ import work.vuong.template.screen.home.MainActivity;
         StoreModule.class
 })
 public interface AppComponent {
-    void inject(MainActivity mainActivity);
-
+    void inject(HomeActivity addUserActivity);
     void inject(AddUserActivity addUserActivity);
 }

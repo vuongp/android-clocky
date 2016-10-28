@@ -1,8 +1,10 @@
-package work.vuong.template.common.GithubStore;
+package work.vuong.template.common.store;
+
+import android.text.TextUtils;
 
 import io.realm.Realm;
 import rx.Observable;
-import work.vuong.template.common.model.GitHubUser;
+import work.vuong.template.common.model.GithubUser;
 import work.vuong.template.common.model.GithubSearch;
 import work.vuong.template.common.net.GitHubService;
 
@@ -21,13 +23,23 @@ public class GithubStore {
         this.realm = realm;
     }
 
-    public Observable<GithubSearch<GitHubUser>> githubSearchUser(String query){
+    public Observable<GithubSearch<GithubUser>> githubSearchUser(String query){
+        if (TextUtils.isEmpty(query)) {
+            return Observable.just(GithubSearch.empty(GithubUser.class));
+        }
+
         return gitHubService.searchUsers(query);
     }
 
-    public void saveUser(GitHubUser user){
+    public void saveUser(GithubUser user){
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(user);
+        realm.commitTransaction();
+    }
+
+    public void deleteUser(GithubUser user) {
+        realm.beginTransaction();
+        user.deleteFromRealm();
         realm.commitTransaction();
     }
 }

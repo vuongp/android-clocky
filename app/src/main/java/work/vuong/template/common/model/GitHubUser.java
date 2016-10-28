@@ -10,7 +10,7 @@ import io.realm.annotations.PrimaryKey;
  *
  *  Github user object
  */
-public class GitHubUser extends RealmObject{
+public class GithubUser extends RealmObject{
 
     private String login;
     @PrimaryKey private int id;

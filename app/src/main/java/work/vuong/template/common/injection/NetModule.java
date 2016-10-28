@@ -42,7 +42,7 @@ class NetModule {
 
         if (BuildConfig.DEBUG) {
             httpClientBuilder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
-            httpClientBuilder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.168.0.74", 8888)));
+//            httpClientBuilder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("192.168.0.74", 8888)));
         }
 
         return new Retrofit.Builder()

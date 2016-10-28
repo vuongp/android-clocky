@@ -27,25 +27,21 @@ Testing everything
 * Unit testing
 * UI tests
 
-## Not included by default
-
-* Any analytics
-* Crashlytics
-* Firebase
-
 ## Changelog
 
-### 14 Oktober 2016
+### 28 October
+* 
+
+### 14 October 2016
 * Added RxJava example with Retrofit2 in the GithubService
 * Added Realm implementation
-*
 
-### 11 Oktober 2016
+### 11 October 2016
 
 * Added dagger2 setup/example
 * Added dagger2, RxJava, Realm dependencies to gradle, Retrofit with GSON, Picasso
 * Enabled Databinding
 
 
-### 10 oktober 2016
+### 10 October 2016
 Initialised project

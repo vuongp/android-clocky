@@ -6,4 +6,8 @@
 
     <string name="action_settings">Settings</string>
     <string name="search_user_hint">Search user</string>
+    <string name="screen_title_home">Home</string>
+    <string name="user_added">User added</string>
+    <string name="undo">Undo</string>
+    <string name="user_deleted">User deleted</string>
 </resources>

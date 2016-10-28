@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.realm.Realm;
-import work.vuong.template.common.GithubStore.GithubStore;
+import work.vuong.template.common.store.GithubStore;
 import work.vuong.template.common.net.GitHubService;
 
 /**

@@ -2,6 +2,7 @@ package work.vuong.template.common.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,5 +39,11 @@ public class GithubSearch<T> {
 
     public void setResults(List<T> results) {
         this.results = results;
+    }
+
+    public static <T> GithubSearch<T> empty(Class<T> clazz) {
+        GithubSearch<T> githubSearch = new GithubSearch<>();
+        githubSearch.setResults(new ArrayList<>());
+        return githubSearch;
     }
 }

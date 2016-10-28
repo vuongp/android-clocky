@@ -3,7 +3,6 @@ package work.vuong.template.common.activity;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -30,8 +29,8 @@ public abstract class AbstractActivity<B extends ViewDataBinding> extends AppCom
     protected abstract void inject(@NonNull AppComponent component);
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         inject(getComponent());
         binding = DataBindingUtil.setContentView(this, getLayoutId());
     }
