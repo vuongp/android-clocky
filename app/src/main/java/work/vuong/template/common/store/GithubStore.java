@@ -2,6 +2,8 @@ package work.vuong.template.common.store;
 
 import android.text.TextUtils;
 
+import java.util.List;
+
 import io.realm.Realm;
 import rx.Observable;
 import work.vuong.template.common.model.GithubUser;
@@ -41,5 +43,9 @@ public class GithubStore {
         realm.beginTransaction();
         user.deleteFromRealm();
         realm.commitTransaction();
+    }
+
+    public List<GithubUser> getSavedUsers() {
+        return realm.where(GithubUser.class).findAll();
     }
 }

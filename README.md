@@ -17,20 +17,20 @@ Using the built in version of the gradle plugin 2.2 did not seem to generate dag
 ## TODO
 
 Initial setup to make for the following
-* RecyclerView examples
-* Picasso usage
+
+* Product flavors/builds ( Stage, test?, mock )
 * Setup using mvp for testing purposes
 * Dependency version separate
-* Product flavors/builds ( Stage, test?, mock )
 
 Testing everything
+
 * Unit testing
 * UI tests
 
 ## Changelog
 
 ### 28 October
-* 
+* Added samples making it a working project
 
 ### 14 October 2016
 * Added RxJava example with Retrofit2 in the GithubService

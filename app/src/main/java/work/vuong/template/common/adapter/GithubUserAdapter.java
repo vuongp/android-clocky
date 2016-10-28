@@ -1,4 +1,4 @@
-package work.vuong.template.screen.adduser;
+package work.vuong.template.common.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,12 +14,12 @@ import work.vuong.template.databinding.ItemGithubUserBinding;
  *
  *  Simple adapter to display list of users.
  */
-class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.ViewHolder> {
+public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.ViewHolder> {
 
     private ItemClickListener itemClickListener;
     private List<GithubUser> items;
 
-    GithubUserAdapter(List<GithubUser> items) {
+    public GithubUserAdapter(List<GithubUser> items) {
         this.items = items;
     }
 
@@ -44,7 +44,7 @@ class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.ViewHolde
         return items.size();
     }
 
-    List<GithubUser> getItems() {
+    public List<GithubUser> getItems() {
         return items;
     }
 
@@ -52,7 +52,7 @@ class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.ViewHolde
         this.itemClickListener = itemClickListener;
     }
 
-    void setItems(List<GithubUser> items) {
+    public void setItems(List<GithubUser> items) {
         this.items = items;
     }
 

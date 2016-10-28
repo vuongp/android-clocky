@@ -2,10 +2,8 @@ package work.vuong.template.screen.adduser;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.widget.RxTextView;
@@ -20,6 +18,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import work.vuong.template.R;
 import work.vuong.template.common.activity.AbstractActivity;
+import work.vuong.template.common.adapter.GithubUserAdapter;
 import work.vuong.template.common.injection.AppComponent;
 import work.vuong.template.common.model.GithubSearch;
 import work.vuong.template.common.model.GithubUser;
@@ -30,7 +29,6 @@ import work.vuong.template.databinding.ActivityAddUserBinding;
 
 public class AddUserActivity extends AbstractActivity<ActivityAddUserBinding> {
 
-    private static final String TAG = "AddUserActivity";
     private Subscription textSubscription;
     private GithubUserAdapter userAdapter;
     //Injected

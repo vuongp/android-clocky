@@ -1,20 +1,23 @@
 package work.vuong.template.screen.home;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import javax.inject.Inject;
 
 import work.vuong.template.R;
-import work.vuong.template.common.store.GithubStore;
 import work.vuong.template.common.activity.AbstractActivity;
+import work.vuong.template.common.adapter.GithubUserAdapter;
 import work.vuong.template.common.injection.AppComponent;
+import work.vuong.template.common.store.GithubStore;
 import work.vuong.template.databinding.ActivityHomeBinding;
 import work.vuong.template.screen.adduser.AddUserActivity;
 
 /**
- * Homescreen activity
+ * Homescreen activity showing a list of saved users.
  */
 public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
 
@@ -35,13 +38,15 @@ public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setSupportActionBar(getBinding().appBar.toolbar);
+        RecyclerView recycler = getBinding().appBar.contentMain.recycler;
+        recycler.setAdapter(new GithubUserAdapter(githubStore.getSavedUsers()));
+        recycler.setLayoutManager(new GridLayoutManager(this, 2));
 
+        setSupportActionBar(getBinding().appBar.toolbar);
         getBinding().appBar.fab.setOnClickListener(view -> showAddUser());
     }
 
     private void showAddUser() {
-        Intent intent = new Intent(this, AddUserActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, AddUserActivity.class));
     }
 }
