@@ -1,0 +1,29 @@
+package work.vuong.template.common.injection;
+
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+import io.realm.Realm;
+
+/**
+ * Created by vuongp on 14-10-16.
+ *
+ * Module for Anything that stores.
+ */
+@Module
+public class StoreModule {
+
+    @Provides
+    @Singleton
+    Realm provideRealm(){
+       return Realm.getDefaultInstance();
+    }
+//
+//    @Provides
+//    @Singleton
+//    GithubStore provideGitHubStore(GitHubService gitHubService, Realm realm){
+//        return new GithubStore(gitHubService, realm);
+//    }
+
+}

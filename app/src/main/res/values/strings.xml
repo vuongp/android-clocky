@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">template</string>
+    <string name="app_name">Clocky</string>
+    <string name="ping_text">%d ms</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
+    <string name="screen_title_home">Home</string>
+    <string name="ping_error">...</string>
 </resources>

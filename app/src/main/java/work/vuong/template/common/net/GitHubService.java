@@ -5,5 +5,10 @@ package work.vuong.template.common.net;
  *
  * Api service for github
  */
-public class GitHubService {
+public interface GitHubService {
+
+//    @Headers("Accept: application/vnd.github.v3+json")
+//    @GET("/search/users")
+//    Observable<GithubSearch<GithubUser>> searchUsers(@Query("q") String query);
+
 }
