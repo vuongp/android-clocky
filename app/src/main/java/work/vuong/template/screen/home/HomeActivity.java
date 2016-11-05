@@ -2,6 +2,11 @@ package work.vuong.template.screen.home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,8 +27,7 @@ import work.vuong.template.databinding.ActivityHomeBinding;
  */
 public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
 
-    private static final String TAG = "HomeActivity";
-    private Subscription subscription;
+    private Subscription subscription, subscriptionImage;
 
     @Override
     protected int getLayoutId() {
@@ -42,13 +46,28 @@ public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
     }
 
     @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        setNewImage();
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
+
+        // Create an observable dat sets another cat image every 30 minutes.
+        subscriptionImage = Observable.timer(30, TimeUnit.MINUTES)
+                .repeat()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(l -> {
+                    setNewImage();
+                }, Throwable::printStackTrace);
 
         // Create an observable that returns a ping every second.
         subscription = Observable.timer(1, TimeUnit.SECONDS)
                 .flatMap(l -> NetworkUtil.getPing())
                 .repeat()
+                .retry()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(ping -> {
@@ -60,9 +79,29 @@ public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
                 }, Throwable::printStackTrace);
     }
 
+    private void setNewImage() {
+        //Get the image at half the resolution so it takes less network calls
+        int width = getVariable(getBinding().getRoot().getWidth() / 2, 100);
+        int height = getVariable(getBinding().getRoot().getHeight() / 2, 100);
+
+        Picasso.with(this).load(getString(R.string.cat_image_url, width, height))
+                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .noPlaceholder()
+                .into(getBinding().image);
+    }
+
+    /**
+     * @param number
+     * @return a random number within the limit given
+     */
+    private int getVariable(int number, int limit) {
+        return (int) ((Math.random() * limit * 2) - limit) + number;
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
-        RxUtil.unsubscribe(subscription);
+        RxUtil.unsubscribe(subscription, subscriptionImage);
     }
 }
