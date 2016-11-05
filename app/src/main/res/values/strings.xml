@@ -4,4 +4,5 @@
 
     <string name="screen_title_home">Home</string>
     <string name="ping_error">...</string>
+    <string name="cat_image_url"><![CDATA[http://thecatapi.com/api/images/get?api_key=MTMzNTc5&type=png,jpg&count=%d]]></string>
 </resources>

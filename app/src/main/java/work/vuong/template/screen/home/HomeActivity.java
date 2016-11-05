@@ -2,6 +2,10 @@ package work.vuong.template.screen.home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +27,8 @@ import work.vuong.template.databinding.ActivityHomeBinding;
 public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
 
     private static final String TAG = "HomeActivity";
-    private Subscription subscription;
+    private Subscription subscription, subscriptionImage;
+    private int count = 0;
 
     @Override
     protected int getLayoutId() {
@@ -45,6 +50,15 @@ public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
     protected void onStart() {
         super.onStart();
 
+        setNewImage();
+        // Create an observable dat sets another cat image every 30 minutes.
+        subscriptionImage = Observable.timer(30, TimeUnit.MINUTES)
+                .repeat()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(l -> {
+                    setNewImage();
+                }, Throwable::printStackTrace);
+
         // Create an observable that returns a ping every second.
         subscription = Observable.timer(1, TimeUnit.SECONDS)
                 .flatMap(l -> NetworkUtil.getPing())
@@ -60,9 +74,15 @@ public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
                 }, Throwable::printStackTrace);
     }
 
+    private void setNewImage() {
+        Picasso.with(this).load(getString(R.string.cat_image_url, ++count))
+                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
+                .into(getBinding().image);
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
-        RxUtil.unsubscribe(subscription);
+        RxUtil.unsubscribe(subscription, subscriptionImage);
     }
 }
