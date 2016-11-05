@@ -8,5 +8,5 @@
 
     <color name="background">#000</color>
     <color name="text">#fff</color>
-    <color name="background_translucent">#90000000</color>
+    <color name="background_translucent">#66000000</color>
 </resources>
