@@ -5,8 +5,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.realm.Realm;
-import work.vuong.template.common.store.GithubStore;
-import work.vuong.template.common.net.GitHubService;
 
 /**
  * Created by vuongp on 14-10-16.
@@ -21,11 +19,11 @@ public class StoreModule {
     Realm provideRealm(){
        return Realm.getDefaultInstance();
     }
-
-    @Provides
-    @Singleton
-    GithubStore provideGitHubStore(GitHubService gitHubService, Realm realm){
-        return new GithubStore(gitHubService, realm);
-    }
+//
+//    @Provides
+//    @Singleton
+//    GithubStore provideGitHubStore(GitHubService gitHubService, Realm realm){
+//        return new GithubStore(gitHubService, realm);
+//    }
 
 }

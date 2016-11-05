@@ -8,4 +8,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="profile_image">50dp</dimen>
     <dimen name="point_1">8dp</dimen>
+    <dimen name="text_clock">200sp</dimen>
+    <dimen name="ping_text">32sp</dimen>
+    <dimen name="point_2">16dp</dimen>
 </resources>

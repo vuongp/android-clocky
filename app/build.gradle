@@ -13,8 +13,8 @@ android {
 
     defaultConfig {
         //TODO: Change package name when using this template.
-        applicationId "work.vuong.template"
-        minSdkVersion 16
+        applicationId "work.vuong.clocky"
+        minSdkVersion 17
         targetSdkVersion 25
         versionCode 1
         versionName "0.1"
@@ -23,6 +23,7 @@ android {
 
     buildTypes {
         release {
+            //TODO: set to true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -37,7 +38,7 @@ android {
 
         }
         mock {
-            applicationIdSuffix = ".stage"
+            applicationIdSuffix = ".mock"
         }
     }
 
