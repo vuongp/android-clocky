@@ -4,4 +4,5 @@
 
     <string name="screen_title_home">Home</string>
     <string name="ping_error">...</string>
+    <string name="cat_image_url" formatted="false">https://placekitten.com/%d/%d</string>
 </resources>
