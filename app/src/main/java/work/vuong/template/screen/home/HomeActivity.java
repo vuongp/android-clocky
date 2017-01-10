@@ -3,11 +3,13 @@ package work.vuong.template.screen.home;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
@@ -20,6 +22,7 @@ import work.vuong.template.common.injection.AppComponent;
 import work.vuong.template.common.util.ActivityUtil;
 import work.vuong.template.common.util.NetworkUtil;
 import work.vuong.template.common.util.RxUtil;
+import work.vuong.template.common.util.ViewUtil;
 import work.vuong.template.databinding.ActivityHomeBinding;
 
 /**
@@ -27,7 +30,7 @@ import work.vuong.template.databinding.ActivityHomeBinding;
  */
 public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
 
-    private Subscription subscription, subscriptionImage;
+    private Subscription subscription, subscriptionImage, subscriptionTap;
 
     @Override
     protected int getLayoutId() {
@@ -54,6 +57,12 @@ public class HomeActivity extends AbstractActivity<ActivityHomeBinding> {
     @Override
     protected void onStart() {
         super.onStart();
+
+        getBinding().frame.setOnClickListener(v -> {
+            setNewImage();
+            RxUtil.unsubscribe(subscriptionTap);
+            subscriptionTap = ViewUtil.disableView(getBinding().frame, 1, TimeUnit.SECONDS);
+        });
 
         // Create an observable dat sets another cat image every 30 minutes.
         subscriptionImage = Observable.timer(30, TimeUnit.MINUTES)
